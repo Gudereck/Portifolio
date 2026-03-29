@@ -11,6 +11,7 @@ export class ProjetosComponent {
       nome: 'Projeto de Geladeira em Java',
       descricao: 'Projeto de geladeira com interface gráfica e banco de dados estruturado em Memoria.',
       tecnologias: ['Java', 'Memoria', 'Spring Boot'],
+      imagem: '/Geladeira.png',
       linkGithub: 'https://github.com/Gudereck/GeladeiraJava'
     },
     {

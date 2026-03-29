@@ -21,7 +21,7 @@ export class Projetos {
       nome: 'Projeto de Geladeira em Java',
       descricao: 'Projeto de geladeira com interface gráfica e banco de dados estruturado em Memória.',
       tecnologias: ['Java', 'Spring Boot'],
-      imagem: '/Financeiro.jpg', // Coloquei a foto do financeiro aqui só para não ficar vazio!
+      imagem: '/Geladeira.png',
       linkGithub: 'https://github.com/Gudereck/GeladeiraJava'
     },
     {
@@ -40,3 +40,6 @@ export class Projetos {
     }
   ];
 }
+
+
+
