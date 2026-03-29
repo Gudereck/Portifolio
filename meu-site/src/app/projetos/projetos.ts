@@ -1,14 +1,5 @@
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-projetos',
-  standalone: true,
-  imports: [],
-  templateUrl: './projetos.html',
-  styleUrl: './projetos.css'
-})
+// src/app/projetos/projetos.ts
 export class Projetos {
-
   meusProjetos = [
     {
       nome: 'Leitor Crítico Web',
@@ -21,7 +12,7 @@ export class Projetos {
       nome: 'Projeto de Geladeira em Java',
       descricao: 'Projeto de geladeira com interface gráfica e banco de dados estruturado em Memória.',
       tecnologias: ['Java', 'Spring Boot'],
-      imagem: '/Geladeira.png',
+      imagem: '/geladeira.png', // <--- Minúsculo
       linkGithub: 'https://github.com/Gudereck/GeladeiraJava'
     },
     {
@@ -29,17 +20,14 @@ export class Projetos {
       descricao: 'Serviços de criação de sites, design de artes e edição de vídeos.',
       tecnologias: ['Design', 'Edição', 'Web Design'],
       imagem: '/pvworks.jpg',
-      linkGithub: 'https://github.com/Gudereck' // Ajustei para o seu GitHub
+      linkGithub: 'https://github.com/Gudereck'
     },
     {
       nome: 'Sistema de Controle Financeiro',
-      descricao: 'Projeto desktop de gerenciamento financeiro construído com arquitetura em camadas, unindo backend robusto e interface gráfica.',
+      descricao: 'Projeto desktop de gerenciamento financeiro...',
       tecnologias: ['Java', 'Swing', 'MySQL', 'Spring Boot'],
-      imagem: '/Financeiro.png',
+      imagem: '/financeiro.png', // <--- Minúsculo e confira se é .png mesmo
       linkGithub: 'https://github.com/Gudereck/ProjetoFinanceiro'
     }
   ];
 }
-
-
-

@@ -25,7 +25,7 @@ export class ProjetosComponent {
       nome: 'Sistema de Controle Financeiro',
       descricao: 'Projeto desktop de gerenciamento financeiro construído com arquitetura em camadas , unindo um backend robusto a uma interface gráfica nativa e armazenamento em banco relacional.',
       tecnologias: ['Java', 'Swing', 'MySQL', 'Spring Boot'],
-      imagem: '/Financeiro.jpg',
+      imagem: '/Financeiro.png',
       linkGithub: 'https://github.com/Gudereck/ProjetoFinanceiro'
     }
   ];
