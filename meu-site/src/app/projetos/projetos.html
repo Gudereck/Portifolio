@@ -1,0 +1,32 @@
+<section class="projetos-section" id="projetos">
+    <h2 class="titulo-secao">Meus Projetos e Serviços</h2>
+
+    <div class="projetos-grid">
+        @for (projeto of meusProjetos; track projeto.nome) {
+        <div class="card">
+
+            <div class="card-image">
+                <img [src]="projeto.imagem" [alt]="'Screenshot do projeto ' + projeto.nome">
+            </div>
+
+            <div class="card-content">
+                <h3>{{ projeto.nome }}</h3>
+                <p>{{ projeto.descricao }}</p>
+
+                <div class="tecnologias">
+                    @for (tec of projeto.tecnologias; track tec) {
+                    <span class="badge">{{ tec }}</span>
+                    }
+                </div>
+
+                <div class="card-actions">
+                    <a [href]="projeto.linkGithub" target="_blank" rel="noopener noreferrer" class="btn-github">
+                        Ver no GitHub
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        }
+    </div>
+</section>

@@ -1,0 +1,42 @@
+<section class="sobre-section" id="sobre">
+    <div class="sobre-container">
+
+        <h2>Sobre Mim</h2>
+
+        <div class="sobre-foto-container">
+            <img [src]="fotoPerfil" alt="Foto de Perfil do Gustavo">
+        </div>
+
+        <div class="sobre-texto">
+            <h3>Olá, eu sou o {{ nome }}</h3>
+
+            <div class="typing-container">
+                <p class="typing-text">{{ titulo }}</p>
+            </div>
+
+            <div class="redes-sociais">
+                <a href="https://github.com/Gudereck" target="_blank" title="Ver GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/seu-usuario" target="_blank" title="Ver LinkedIn">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+            </div>
+
+            <p class="resumo">{{ resumo }}</p>
+        </div>
+
+        <div class="sobre-habilidades">
+            <h3>Minhas Habilidades Tecnológicas</h3>
+            <div class="habilidades-grid">
+                @for (hab of habilidadesPrincipais; track hab.nome) {
+                <span class="hab-badge">
+                    <i [class]="hab.icone"></i>
+                    {{ hab.nome }}
+                </span>
+                }
+            </div>
+        </div>
+
+    </div>
+</section>

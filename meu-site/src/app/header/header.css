@@ -1,0 +1,102 @@
+/* O contêiner principal do menu */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    /* Empurra a logo para a esquerda e os links para a direita */
+    align-items: center;
+    /* Centraliza tudo verticalmente */
+    background-color: rgba(30, 30, 30, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 15px 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Uma leve sombra embaixo do menu */
+}
+
+/* Estilo da Logo */
+.logo h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #4CAF50;
+    /* Um tom de verde para dar destaque. Você pode mudar depois! */
+    letter-spacing: 2px;
+}
+
+/* Estilo da lista de links */
+.nav-links {
+    list-style: none;
+    /* Tira aquelas "bolinhas" padrão da lista */
+    display: flex;
+    gap: 30px;
+    /* Espaço entre cada link */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo dos links (os textos clicáveis) */
+.nav-links li a {
+    color: #ffffff;
+    text-decoration: none;
+    /* Tira o sublinhado padrão de links */
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    /* Faz a mudança de cor ser suave */
+}
+
+/* Efeito ao passar o mouse por cima do link */
+.nav-links li a:hover {
+    color: #4CAF50;
+}
+
+/* Container para alinhar menu e botão */
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    /* Espaço entre os links e o botão */
+}
+
+/* Estilo do Botão de CV no Header */
+.btn-cv-header {
+    background-color: #4CAF50;
+    /* Verde do seu tema */
+    color: #1a1a1a !important;
+    /* Cor escura para contraste */
+    padding: 8px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* Espaço entre o ícone e o texto */
+    transition: all 0.3s ease;
+    border: 2px solid #4CAF50;
+}
+
+.btn-cv-header i {
+    font-size: 16px;
+}
+
+/* Efeito ao passar o mouse */
+.btn-cv-header:hover {
+    background-color: transparent;
+    color: #4CAF50 !important;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.4);
+}
+
+/* Ajuste para telas menores (responsividade básica) */
+@media (max-width: 768px) {
+    .nav-container {
+        gap: 20px;
+    }
+
+    .nav-links {
+        display: none;
+        /* Em celulares, podemos esconder os links e deixar só o CV por enquanto */
+    }
+}
