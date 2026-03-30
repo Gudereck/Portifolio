@@ -1,52 +1,59 @@
 /* O contêiner principal do menu */
 .navbar {
+    position: fixed;
+    /* Fixa o menu no topo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Ocupa toda a largura */
+    z-index: 1000;
+    /* Garante que fique na frente de tudo */
+
     display: flex;
     justify-content: space-between;
-    /* Empurra a logo para a esquerda e os links para a direita */
     align-items: center;
-    /* Centraliza tudo verticalmente */
-    background-color: rgba(30, 30, 30, 0.7);
+
+    /* Efeito de Vidro (Glassmorphism) */
+    background-color: rgba(20, 20, 20, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding: 15px 50px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* Uma leve sombra embaixo do menu */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    /* Evita que o padding estoure a largura */
+    transition: all 0.3s ease;
 }
 
 /* Estilo da Logo */
 .logo h1 {
     margin: 0;
-    font-size: 24px;
+    font-size: 22px;
     color: #4CAF50;
-    /* Um tom de verde para dar destaque. Você pode mudar depois! */
-    letter-spacing: 2px;
+    /* Verde PVWORKS */
+    letter-spacing: 1.5px;
+    font-weight: 700;
 }
 
-/* Estilo da lista de links */
+/* Estilo da lista de links (Desktop) */
 .nav-links {
     list-style: none;
-    /* Tira aquelas "bolinhas" padrão da lista */
     display: flex;
     gap: 30px;
-    /* Espaço entre cada link */
     margin: 0;
     padding: 0;
 }
 
-/* Estilo dos links (os textos clicáveis) */
 .nav-links li a {
     color: #ffffff;
     text-decoration: none;
-    /* Tira o sublinhado padrão de links */
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     transition: color 0.3s ease;
-    /* Faz a mudança de cor ser suave */
 }
 
-/* Efeito ao passar o mouse por cima do link */
 .nav-links li a:hover {
     color: #4CAF50;
 }
@@ -55,48 +62,62 @@
 .nav-container {
     display: flex;
     align-items: center;
-    gap: 40px;
-    /* Espaço entre os links e o botão */
+    gap: 30px;
 }
 
-/* Estilo do Botão de CV no Header */
+/* Estilo do Botão de CV */
 .btn-cv-header {
     background-color: #4CAF50;
-    /* Verde do seu tema */
-    color: #1a1a1a !important;
-    /* Cor escura para contraste */
-    padding: 8px 20px;
+    color: #000000 !important;
+    padding: 8px 18px;
     border-radius: 6px;
     text-decoration: none;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 13px;
     display: flex;
     align-items: center;
     gap: 8px;
-    /* Espaço entre o ícone e o texto */
     transition: all 0.3s ease;
     border: 2px solid #4CAF50;
 }
 
-.btn-cv-header i {
-    font-size: 16px;
-}
-
-/* Efeito ao passar o mouse */
 .btn-cv-header:hover {
     background-color: transparent;
     color: #4CAF50 !important;
-    box-shadow: 0 0 10px rgba(76, 175, 80, 0.4);
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.4);
 }
 
-/* Ajuste para telas menores (responsividade básica) */
+/* ============================================================
+   RESPONSIVIDADE (Ajustes para Celular)
+   ============================================================ */
+
 @media (max-width: 768px) {
-    .nav-container {
-        gap: 20px;
+    .navbar {
+        padding: 10px 15px;
+        /* Reduz espaço lateral no celular */
     }
 
+    /* Esconde os links centrais para não amontoar no topo */
     .nav-links {
         display: none;
-        /* Em celulares, podemos esconder os links e deixar só o CV por enquanto */
+    }
+
+    .logo h1 {
+        font-size: 18px;
+        /* Nome menor para caber em telas pequenas */
+    }
+
+    .nav-container {
+        gap: 10px;
+    }
+
+    .btn-cv-header {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+
+    /* Esconde o ícone de PDF no celular para ganhar espaço */
+    .btn-cv-header i {
+        display: none;
     }
 }

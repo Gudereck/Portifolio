@@ -1,38 +1,50 @@
-/* src/styles.css */
-
-/* 1. Mágica da Rolagem Suave */
+/* ============================================================
+   1. RESET GLOBAL E CONFIGURAÇÕES DE BASE
+   ============================================================ */
 html {
     scroll-behavior: smooth;
+    /* Mágica da rolagem suave ao clicar no menu */
+    height: 100%;
+    width: 100%;
 }
 
-/* 2. Reset Global */
-html,
 body {
     margin: 0;
     padding: 0;
+    padding-top: 80px;
+    /* IMPORTANTE: Abre espaço para o Header Fixo não cobrir o conteúdo */
     height: 100%;
     width: 100%;
-    background-color: transparent;
+    background-color: #0a0a0a;
+    /* Fundo base bem escuro */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #ffffff;
-    /* Garante que o texto base seja branco */
+    overflow-x: hidden;
+    /* Evita que o site "balance" para os lados no celular */
 }
 
-/* 3. Ajuste de Rolagem (O "Pulo do Gato") */
-/* Isso impede que o seu Header fixo fique em cima do título da seção 
-   quando você clica nos links do menu. */
-section {
-    scroll-margin-top: 90px;
-    /* Ajuste esse valor se o seu header for mais alto ou mais baixo */
-}
-
-/* 4. Garante que imagens não quebrem o layout */
-img {
+/* Garante que imagens e vídeos não estourem o layout */
+img,
+video {
     max-width: 100%;
+    height: auto;
     display: block;
 }
 
-/* Container do Fundo Animado */
+/* ============================================================
+   2. AJUSTES DE NAVEGAÇÃO (ÂNCORES)
+   ============================================================ */
+/* Isso impede que o Header fixo fique em cima do título da seção quando você clica no menu */
+section {
+    scroll-margin-top: 90px;
+    padding: 80px 20px;
+    /* Respiro padrão entre as seções */
+    box-sizing: border-box;
+}
+
+/* ============================================================
+   3. FUNDO ANIMADO (ORBES DE LUZ VERDE)
+   ============================================================ */
 .bg-animated {
     position: fixed;
     top: 0;
@@ -41,24 +53,22 @@ img {
     height: 100%;
     z-index: -1;
     /* Fica atrás de tudo */
-    background-color: #0a0a0a;
-    /* Fundo ainda mais escuro para contraste */
+    background-color: #050505;
     overflow: hidden;
 }
 
-/* Orbes de luz verde */
+/* Círculos de luz neon verde */
 .circle {
     position: absolute;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(76, 175, 80, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(circle, rgba(76, 175, 80, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
     border-radius: 50%;
     filter: blur(60px);
-    /* Deixa a luz suave */
     animation: move 20s infinite alternate ease-in-out;
 }
 
-/* Posicionamento e variações das animações */
+/* Variações de posição e tempo dos círculos */
 .circle:nth-child(1) {
     top: -10%;
     left: -10%;
@@ -68,7 +78,6 @@ img {
 .circle:nth-child(2) {
     bottom: -10%;
     right: -10%;
-    background: radial-gradient(circle, rgba(76, 175, 80, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
     animation-duration: 30s;
     animation-delay: -5s;
 }
@@ -78,11 +87,9 @@ img {
     left: 50%;
     width: 300px;
     height: 300px;
-    animation-duration: 20s;
-    animation-delay: -2s;
+    animation-duration: 22s;
 }
 
-/* Definição do movimento dos orbes */
 @keyframes move {
     0% {
         transform: translate(0, 0) scale(1);
@@ -93,10 +100,47 @@ img {
     }
 
     66% {
-        transform: translate(-50px, 300px) scale(0.8);
+        transform: translate(-50px, 300px) scale(0.9);
     }
 
     100% {
         transform: translate(0, 0) scale(1);
+    }
+}
+
+/* ============================================================
+   4. RESPONSIVIDADE (AJUSTES PARA CELULAR)
+   ============================================================ */
+@media (max-width: 768px) {
+    body {
+        padding-top: 65px;
+        /* Menu menor no celular, ajuste menor aqui */
+    }
+
+    section {
+        padding: 40px 15px !important;
+        /* Menos espaço sobrando no celular */
+        scroll-margin-top: 70px;
+    }
+
+    .titulo-secao {
+        font-size: 24px !important;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    /* Ajuste para que textos longos não encostem na borda da tela */
+    p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+}
+
+/* Ajuste fino para aparelhos muito pequenos */
+@media (max-width: 380px) {
+    .circle {
+        width: 250px;
+        /* Orbes menores para não pesar no processamento do celular */
+        height: 250px;
     }
 }

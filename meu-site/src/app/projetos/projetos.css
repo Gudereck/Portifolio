@@ -164,3 +164,16 @@
     color: #1a1a1a;
     box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
 }
+
+.projetos-grid {
+    /* Mudamos o minmax para 100% no mobile */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+@media (max-width: 480px) {
+    .contato-card {
+        padding: 20px 15px;
+        /* Card menos "gordo" por dentro */
+    }
+}
