@@ -198,13 +198,19 @@
 }
 
 /* Ajuste fino para celulares muito pequenos */
-@media (max-width: 400px) {
-    .typing-text {
-        font-size: 14px;
+@media (max-width: 768px) {
+    .sobre-foto-container img {
+        width: 80%;
+        /* Ocupa 80% da largura da tela do celular */
+        max-width: 250px;
+        /* Mas nunca passa de 250px */
+        height: auto;
+        /* Mantém a proporção */
     }
 
-    .sobre-foto-container img {
-        width: 180px;
-        height: 180px;
+    /* O texto de digitação PRECISA diminuir no celular */
+    .typing-text {
+        font-size: 14px !important;
+        letter-spacing: 0.05em;
     }
 }
