@@ -14,8 +14,8 @@
     text-align: center;
     font-size: 32px;
     margin-bottom: 50px;
-    color: #4CAF50;
-    /* Aquele mesmo verde da logo PVWORKS */
+    color: #ef4444;
+    text-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
 }
 
 /* A "Matriz" que organiza os cartões automaticamente */
@@ -39,11 +39,9 @@
 
 /* Efeito ao passar o mouse por cima (Hover) */
 .card:hover {
-    transform: translateY(-10px);
-    /* O cartão "levanta" um pouco */
-    box-shadow: 0 10px 20px rgba(76, 175, 80, 0.2);
-    /* Sombra verde sutil */
-    border-color: #4CAF50;
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(239, 68, 68, 0.25);
+    border-color: #ef4444;
 }
 
 .card h3 {
@@ -67,13 +65,19 @@
 
 /* Estilo das etiquetas (ex: Java, Python, MongoDB) */
 .badge {
-    background-color: rgba(76, 175, 80, 0.1);
-    color: #4CAF50;
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
     padding: 6px 12px;
     border-radius: 20px;
     font-size: 14px;
     font-weight: 600;
-    border: 1px solid rgba(76, 175, 80, 0.3);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    transition: all 0.2s ease;
+}
+
+.badge:hover {
+    background-color: rgba(239, 68, 68, 0.2);
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
 }
 
 /* src/app/projetos/projetos.css */
@@ -94,19 +98,26 @@
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(76, 175, 80, 0.2);
-    border-color: #4CAF50;
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(239, 68, 68, 0.25);
+    border-color: #ef4444;
 }
 
 /* Novo estilo para a imagem do card */
-.card-image img {
+.card-image {
     width: 100%;
     height: 200px;
-    /* Altura fixa para manter o padrão visual */
-    object-fit: cover;
-    /* Faz a imagem preencher o espaço sem distorcer */
+    background-color: #0f0f0f; /* Fundo escuro para preencher espaços vazios */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-bottom: 1px solid #333;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Faz a imagem preencher sem distorcer ou cortar */
 }
 
 /* Novo container para o conteúdo de texto (para dar padding) */
@@ -150,19 +161,20 @@
     /* Botão ocupa a largura total do conteúdo do card */
     text-align: center;
     background-color: transparent;
-    color: #4CAF50;
+    color: #ef4444;
     padding: 12px 0;
     border-radius: 8px;
     font-weight: bold;
     text-decoration: none;
-    border: 2px solid #4CAF50;
+    border: 2px solid #ef4444;
     transition: all 0.3s ease;
 }
 
 .btn-github:hover {
-    background-color: #4CAF50;
-    color: #1a1a1a;
-    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+    background-color: #ef4444;
+    color: #ffffff;
+    box-shadow: 0 6px 15px rgba(239, 68, 68, 0.4);
+    transform: scale(1.03);
 }
 
 .projetos-grid {
@@ -176,4 +188,91 @@
         padding: 20px 15px;
         /* Card menos "gordo" por dentro */
     }
+}
+
+/* Estilos do Carrossel de Imagens */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-bottom: 1px solid #333;
+    background-color: #0f0f0f; /* Fundo escuro para preencher espaços vazios */
+}
+
+.carousel-slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ajusta a imagem sem esticar ou cortar */
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 5;
+}
+
+.carousel-btn:hover {
+    background-color: #ef4444;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
+}
+
+.carousel-btn.prev {
+    left: 10px;
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 5;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.carousel-dots .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dots .dot:hover {
+    background-color: #ffffff;
+}
+
+.carousel-dots .dot.active {
+    background-color: #ef4444;
+    transform: scale(1.2);
 }

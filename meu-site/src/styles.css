@@ -62,10 +62,10 @@ section {
     position: absolute;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(76, 175, 80, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
     border-radius: 50%;
     filter: blur(60px);
-    animation: move 20s infinite alternate ease-in-out;
+    animation: move 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Variações de posição e tempo dos círculos */

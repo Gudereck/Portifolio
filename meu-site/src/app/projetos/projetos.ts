@@ -12,7 +12,7 @@ export class Projetos {
   meusProjetos = [
     {
       nome: 'Leitor Crítico Web',
-      descricao: 'Aplicação web com integração direta à API do Google Books para busca e gestão de leituras.',
+      descricao: 'Aplicação web com integration direta à API do Google Books para busca e gestão de leituras.',
       tecnologias: ['Nodejs', 'API Rest', 'Web'],
       imagem: '/LeitorCritico.jpg',
       linkGithub: 'https://github.com/Gudereck/Leitor-critico-web'
@@ -25,11 +25,12 @@ export class Projetos {
       linkGithub: 'https://github.com/Gudereck/GeladeiraJava'
     },
     {
-      nome: 'PVWORKS',
-      descricao: 'Serviços de criação de sites, design de artes e edição de vídeos.',
-      tecnologias: ['Design', 'Edição', 'Web Design'],
-      imagem: '/pvworks.jpg',
-      linkGithub: 'https://github.com/Gudereck'
+      nome: 'PvBanks',
+      descricao: 'Sistema bancário simulado e completo (FullStack) com painel de transações, gráficos de despesas e investimentos integrados à API do Banco Central.',
+      tecnologias: ['Angular', 'Spring Boot', 'Java', 'Spring Security'],
+      imagens: ['/pvbanks1.png', '/pvbanks2.png', '/pvbanks3.png', '/pvbanks4.png'],
+      activeImageIndex: 0,
+      linkGithub: 'https://github.com/Gudereck/PvBanks-FullStack'
     },
     {
       nome: 'Sistema de Controle Financeiro',
@@ -39,4 +40,22 @@ export class Projetos {
       linkGithub: 'https://github.com/Gudereck/ProjetoFinanceiro'
     }
   ];
+
+  prevImage(projeto: any) {
+    if (projeto.imagens) {
+      projeto.activeImageIndex = (projeto.activeImageIndex - 1 + projeto.imagens.length) % projeto.imagens.length;
+    }
+  }
+
+  nextImage(projeto: any) {
+    if (projeto.imagens) {
+      projeto.activeImageIndex = (projeto.activeImageIndex + 1) % projeto.imagens.length;
+    }
+  }
+
+  setSlide(projeto: any, index: number) {
+    if (projeto.imagens) {
+      projeto.activeImageIndex = index;
+    }
+  }
 }

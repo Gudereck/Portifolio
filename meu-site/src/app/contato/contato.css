@@ -18,12 +18,13 @@
 }
 
 .titulo-secao {
-    color: #4CAF50;
+    color: #ef4444;
     font-size: 32px;
     margin-top: 0;
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
 }
 
 .subtitulo {
@@ -66,35 +67,37 @@
 
 .contato-card:hover {
     transform: translateY(-8px);
-    border-color: #4CAF50;
-    box-shadow: 0 10px 25px rgba(76, 175, 80, 0.15);
+    border-color: #ef4444;
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.15);
     background: rgba(40, 40, 40, 0.8);
 }
 
 /* Card Destaque (Currículo) */
 .contato-card.destaque {
     background: linear-gradient(145deg, rgba(35, 35, 35, 0.8), rgba(20, 20, 20, 0.9));
-    border: 1px solid rgba(76, 175, 80, 0.4);
+    border: 1px solid rgba(239, 68, 68, 0.4);
 }
 
 /* Ícones dos Cards */
 .card-icon {
     font-size: 28px;
-    color: #4CAF50;
+    color: #ef4444;
     margin-bottom: 15px;
-    background: rgba(76, 175, 80, 0.1);
+    background: rgba(239, 68, 68, 0.1);
     width: 60px;
     height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    transition: 0.3s;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .contato-card:hover .card-icon {
-    background: #4CAF50;
-    color: #1a1a1a;
+    background: #ef4444;
+    color: #ffffff;
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4);
 }
 
 .contato-card h3 {
@@ -115,8 +118,8 @@
    4. BOTÕES E LINKS
    ============================================================ */
 .btn-download {
-    background-color: #4CAF50;
-    color: #121212;
+    background-color: #ef4444;
+    color: #ffffff;
     padding: 10px 20px;
     border-radius: 8px;
     text-decoration: none;
@@ -124,14 +127,16 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: 0.3s;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     font-size: 14px;
     border: none;
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.2);
 }
 
 .btn-download:hover {
-    background-color: #66bb6a;
-    transform: scale(1.05);
+    background-color: #dc2626;
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
 }
 
 .links-lista {
@@ -157,24 +162,25 @@
 }
 
 .link-social:hover {
-    color: #4CAF50;
-    background: rgba(76, 175, 80, 0.1);
-    border-color: rgba(76, 175, 80, 0.3);
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+    transform: translateX(5px);
 }
 
 .link-email {
-    color: #4CAF50;
+    color: #ef4444;
     text-decoration: none;
     font-weight: bold;
     font-size: 14px;
     padding-bottom: 3px;
-    border-bottom: 1px dashed #4CAF50;
+    border-bottom: 1px dashed #ef4444;
     transition: 0.3s;
 }
 
 .link-email:hover {
-    color: #66bb6a;
-    border-color: #66bb6a;
+    color: #dc2626;
+    border-color: #dc2626;
 }
 
 /* ============================================================

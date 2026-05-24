@@ -31,10 +31,16 @@
 .logo h1 {
     margin: 0;
     font-size: 22px;
-    color: #4CAF50;
-    /* Verde PVWORKS */
+    color: #ef4444;
+    /* Vermelho PVWORKS */
     letter-spacing: 1.5px;
     font-weight: 700;
+    transition: text-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.logo h1:hover {
+    text-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
+    transform: scale(1.05);
 }
 
 /* Estilo da lista de links (Desktop) */
@@ -55,7 +61,8 @@
 }
 
 .nav-links li a:hover {
-    color: #4CAF50;
+    color: #ef4444;
+    text-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
 }
 
 /* Container para alinhar menu e botão */
@@ -67,8 +74,8 @@
 
 /* Estilo do Botão de CV */
 .btn-cv-header {
-    background-color: #4CAF50;
-    color: #000000 !important;
+    background-color: #ef4444;
+    color: #ffffff !important;
     padding: 8px 18px;
     border-radius: 6px;
     text-decoration: none;
@@ -78,13 +85,15 @@
     align-items: center;
     gap: 8px;
     transition: all 0.3s ease;
-    border: 2px solid #4CAF50;
+    border: 2px solid #ef4444;
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.2);
 }
 
 .btn-cv-header:hover {
     background-color: transparent;
-    color: #4CAF50 !important;
-    box-shadow: 0 0 15px rgba(76, 175, 80, 0.4);
+    color: #ef4444 !important;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+    transform: translateY(-2px);
 }
 
 /* ============================================================
