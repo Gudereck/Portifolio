@@ -1,46 +1,43 @@
 /* O contêiner principal do menu */
 .navbar {
     position: fixed;
-    /* Fixa o menu no topo */
     top: 0;
     left: 0;
     width: 100%;
-    /* Ocupa toda a largura */
     z-index: 1000;
-    /* Garante que fique na frente de tudo */
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     /* Efeito de Vidro (Glassmorphism) */
-    background-color: rgba(20, 20, 20, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--glass-border);
     padding: 15px 50px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
     box-sizing: border-box;
-    /* Evita que o padding estoure a largura */
-    transition: all 0.3s ease;
+    transition: var(--transition-smooth);
 }
 
 /* Estilo da Logo */
 .logo h1 {
     margin: 0;
     font-size: 22px;
-    color: #ef4444;
-    /* Vermelho PVWORKS */
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     letter-spacing: 1.5px;
-    font-weight: 700;
-    transition: text-shadow 0.3s ease, transform 0.3s ease;
+    font-weight: 800;
+    transition: var(--transition-smooth);
 }
 
 .logo h1:hover {
-    text-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
-    transform: scale(1.05);
+    filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.5));
+    transform: scale(1.03);
 }
 
 /* Estilo da lista de links (Desktop) */
@@ -53,16 +50,33 @@
 }
 
 .nav-links li a {
-    color: #ffffff;
+    color: var(--text-secondary);
     text-decoration: none;
     font-size: 15px;
     font-weight: 500;
-    transition: color 0.3s ease;
+    position: relative;
+    padding: 4px 0;
+    transition: var(--transition-smooth);
 }
 
 .nav-links li a:hover {
-    color: #ef4444;
-    text-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
+    color: var(--text-primary);
+}
+
+/* Linha deslizante no hover */
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: var(--accent-gradient);
+    transition: var(--transition-smooth);
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
 }
 
 /* Container para alinhar menu e botão */
@@ -74,46 +88,43 @@
 
 /* Estilo do Botão de CV */
 .btn-cv-header {
-    background-color: #ef4444;
-    color: #ffffff !important;
+    background: var(--accent-gradient);
+    color: var(--text-primary) !important;
     padding: 8px 18px;
-    border-radius: 6px;
+    border-radius: 8px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 13px;
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: all 0.3s ease;
-    border: 2px solid #ef4444;
-    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.2);
+    transition: var(--transition-smooth);
+    border: 1px solid transparent;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.25);
 }
 
 .btn-cv-header:hover {
-    background-color: transparent;
-    color: #ef4444 !important;
-    box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+    background: transparent !important;
+    border-color: var(--accent-color);
+    color: var(--accent-color) !important;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.45);
     transform: translateY(-2px);
 }
 
 /* ============================================================
    RESPONSIVIDADE (Ajustes para Celular)
    ============================================================ */
-
 @media (max-width: 768px) {
     .navbar {
-        padding: 10px 15px;
-        /* Reduz espaço lateral no celular */
+        padding: 12px 20px;
     }
 
-    /* Esconde os links centrais para não amontoar no topo */
     .nav-links {
         display: none;
     }
 
     .logo h1 {
         font-size: 18px;
-        /* Nome menor para caber em telas pequenas */
     }
 
     .nav-container {
@@ -121,11 +132,11 @@
     }
 
     .btn-cv-header {
-        padding: 6px 10px;
-        font-size: 11px;
+        padding: 6px 12px;
+        font-size: 12px;
+        border-radius: 6px;
     }
 
-    /* Esconde o ícone de PDF no celular para ganhar espaço */
     .btn-cv-header i {
         display: none;
     }

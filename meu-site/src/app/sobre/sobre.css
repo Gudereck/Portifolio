@@ -2,138 +2,204 @@
 .sobre-section {
     padding: 80px 50px;
     background-color: transparent;
-    color: #ffffff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-primary);
 }
 
 .sobre-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 900px;
+    max-width: 1100px;
     margin: 0 auto;
-    text-align: center;
 }
 
-.sobre-container h2 {
-    color: #ef4444;
+.sobre-container .titulo-secao {
+    color: var(--accent-color);
     font-size: 32px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    text-align: center;
     text-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
 }
 
-/* --- FOTO DE PERFIL --- */
+/* --- GRID DO CONTEÚDO (DUAS COLUNAS NO DESKTOP) --- */
+.sobre-content-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+/* Coluna da Esquerda (Foto e Redes) */
+.sobre-col-left {
+    flex: 0 0 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Coluna da Direita (Bio e Habilidades) */
+.sobre-col-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* --- FOTO DE PERFIL COM EFEITO PREMIUM --- */
+.sobre-foto-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    padding: 4px; /* Espaço para a borda gradiente aparecer */
+    background: var(--accent-gradient);
+    box-shadow: 0 10px 30px rgba(239, 68, 68, 0.2);
+    margin-bottom: 25px;
+    transition: var(--transition-smooth);
+}
+
 .sobre-foto-container img {
-    width: 320px;
-    height: 320px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    border: 3px solid #ef4444;
-    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
-    margin-bottom: 25px;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    border: 3px solid var(--bg-secondary); /* Borda interna para separar do gradiente */
+    box-sizing: border-box;
 }
 
-.sobre-foto-container img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 30px rgba(239, 68, 68, 0.5);
+.sobre-foto-container::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    background: var(--accent-gradient);
+    z-index: -1;
+    opacity: 0.5;
+    filter: blur(12px);
+    transition: var(--transition-smooth);
 }
 
-/* --- EFEITO DE DIGITAÇÃO --- */
+.sobre-col-left:hover .sobre-foto-container {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(239, 68, 68, 0.45);
+}
+
+.sobre-col-left:hover .sobre-foto-container::after {
+    opacity: 0.8;
+    filter: blur(18px);
+}
+
+/* --- TEXTOS E BIO --- */
+.sobre-texto h3 {
+    font-size: 32px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.destaque-nome {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Efeito de Escrita */
 .typing-container {
     display: flex;
-    justify-content: center;
-    margin-bottom: 25px;
-    width: 100%;
+    justify-content: flex-start;
+    margin-bottom: 20px;
 }
 
 .typing-text {
-    font-size: 22px;
-    color: #ef4444;
-    font-family: 'Courier New', Courier, monospace;
-    overflow: hidden;
-    border-right: 3px solid #ef4444;
+    font-size: 18px;
+    color: var(--accent-color);
+    font-family: var(--font-mono);
+    border-right: 3px solid var(--accent-color);
     white-space: nowrap;
-    margin: 0 auto;
-    letter-spacing: 0.10em;
-    font-weight: bold;
-    /* Animação de escrita */
+    margin: 0;
+    letter-spacing: 0.05em;
+    font-weight: 600;
     animation:
         typing 3.5s steps(40, end),
         blink-caret .75s step-end infinite;
 }
 
 @keyframes typing {
-    from {
-        width: 0
-    }
-
-    to {
-        width: 100%
-    }
+    from { width: 0 }
+    to { width: 100% }
 }
 
 @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--accent-color); }
+}
 
-    from,
-    to {
-        border-color: transparent
-    }
-
-    50% {
-        border-color: #ef4444;
-    }
+.resumo {
+    line-height: 1.8;
+    color: var(--text-secondary);
+    font-size: 16px;
+    text-align: left;
+    margin: 0;
 }
 
 /* --- ÍCONES SOCIAIS --- */
 .redes-sociais {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    margin-bottom: 30px;
+    gap: 20px;
 }
 
 .redes-sociais a {
-    color: #888;
-    font-size: 40px;
-    transition: all 0.3s ease;
+    color: var(--text-secondary);
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition-smooth);
     text-decoration: none;
 }
 
 .redes-sociais a:hover {
-    color: #ef4444;
-    transform: translateY(-8px) scale(1.15);
-    text-shadow: 0 5px 15px rgba(239, 68, 68, 0.4);
-}
-
-/* --- RESUMO (BIO) --- */
-.resumo {
-    line-height: 1.8;
-    color: #cccccc;
-    font-size: 17px;
-    margin-bottom: 50px;
-    text-align: center;
-    max-width: 800px;
+    color: var(--text-primary);
+    background: var(--accent-gradient);
+    border-color: transparent;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.35);
 }
 
 /* --- HABILIDADES (BADGES) --- */
+.sobre-habilidades h3 {
+    font-size: 20px;
+    color: var(--text-primary);
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-left: 3px solid var(--accent-color);
+    padding-left: 12px;
+}
+
 .habilidades-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 12px;
 }
 
 .hab-badge {
-    background-color: rgba(44, 44, 44, 0.4);
-    color: #ef4444;
+    background-color: var(--glass-bg);
+    color: var(--text-secondary);
     padding: 10px 18px;
-    border-radius: 10px;
-    font-weight: bold;
-    border: 1px solid rgba(239, 68, 68, 0.3);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 8px;
+    font-weight: 600;
+    border: 1px solid var(--glass-border);
+    transition: var(--transition-smooth);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -141,79 +207,116 @@
 }
 
 .hab-badge i {
-    font-size: 22px;
+    font-size: 20px;
+    transition: transform 0.3s ease;
 }
 
 .hab-badge:hover {
-    transform: translateY(-8px) scale(1.05);
-    background-color: #ef4444;
-    color: #ffffff;
-    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.5);
+    transform: translateY(-4px);
+    color: var(--text-primary);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .hab-badge:hover i {
-    color: #ffffff;
+    transform: scale(1.15) rotate(5deg);
 }
+
+/* Cores específicas de cada marca no hover */
+.hab-badge[data-tech="java"]:hover {
+    background: rgba(224, 53, 49, 0.1);
+    border-color: #e03531;
+    color: #e03531;
+}
+
+.hab-badge[data-tech="spring-boot"]:hover {
+    background: rgba(109, 179, 63, 0.1);
+    border-color: #6db33f;
+    color: #6db33f;
+}
+
+.hab-badge[data-tech="node.js"]:hover {
+    background: rgba(67, 133, 61, 0.1);
+    border-color: #43853d;
+    color: #43853d;
+}
+
+.hab-badge[data-tech="angular"]:hover {
+    background: rgba(221, 0, 49, 0.1);
+    border-color: #dd0031;
+    color: #dd0031;
+}
+
+.hab-badge[data-tech="mongodb"]:hover {
+    background: rgba(71, 162, 72, 0.1);
+    border-color: #47a248;
+    color: #47a248;
+}
+
+.hab-badge[data-tech="mysql"]:hover {
+    background: rgba(0, 117, 143, 0.1);
+    border-color: #00758f;
+    color: #00758f;
+}
+
+.hab-badge[data-tech="docker"]:hover {
+    background: rgba(36, 150, 237, 0.1);
+    border-color: #2496ed;
+    color: #2496ed;
+}
+
+.hab-badge[data-tech="linux"]:hover {
+    background: rgba(248, 183, 57, 0.1);
+    border-color: #f8b739;
+    color: #f8b739;
+}
+
 
 /* ============================================================
    AJUSTES DE RESPONSIVIDADE (MOBILE)
    ============================================================ */
+@media (max-width: 992px) {
+    .sobre-content-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .sobre-col-left {
+        flex: 1;
+    }
+
+    .sobre-texto h3,
+    .typing-container,
+    .resumo {
+        text-align: center;
+        justify-content: center;
+    }
+}
 
 @media (max-width: 768px) {
     .sobre-section {
         padding: 60px 20px;
-        /* Reduz o espaço lateral no mobile */
     }
 
-    .sobre-foto-container img {
-        width: 200px;
-        /* Foto menor para não expulsar o texto da tela */
-        height: 200px;
+    .sobre-foto-container {
+        width: 240px;
+        height: 240px;
+    }
+
+    .sobre-texto h3 {
+        font-size: 26px;
     }
 
     .typing-text {
-        font-size: 16px;
-        /* Reduz a fonte para caber em uma linha no celular */
-        letter-spacing: 0.05em;
+        font-size: 15px;
     }
 
     .resumo {
         font-size: 15px;
-        line-height: 1.6;
-        padding: 0 10px;
-        /* Margem interna para o texto não encostar no vidro */
-        text-align: justify;
-        /* Melhora a leitura em blocos de texto */
-    }
-
-    .redes-sociais a {
-        font-size: 35px;
+        line-height: 1.7;
     }
 
     .habilidades-grid {
-        gap: 10px;
-    }
-
-    .hab-badge {
-        padding: 8px 14px;
-        font-size: 13px;
-    }
-}
-
-/* Ajuste fino para celulares muito pequenos */
-@media (max-width: 768px) {
-    .sobre-foto-container img {
-        width: 80%;
-        /* Ocupa 80% da largura da tela do celular */
-        max-width: 250px;
-        /* Mas nunca passa de 250px */
-        height: auto;
-        /* Mantém a proporção */
-    }
-
-    /* O texto de digitação PRECISA diminuir no celular */
-    .typing-text {
-        font-size: 14px !important;
-        letter-spacing: 0.05em;
+        justify-content: center;
     }
 }

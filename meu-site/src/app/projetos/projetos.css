@@ -1,203 +1,166 @@
 /* Espaçamento geral da seção */
 .projetos-section {
-    padding: 60px 50px;
+    padding: 80px 50px;
     background-color: transparent;
-    color: #ffffff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-primary);
     min-height: 100vh;
-    padding-bottom: 20px;
-    /* Garante que a seção ocupe pelo menos a altura da tela */
+    box-sizing: border-box;
 }
 
 /* Título da seção */
-.titulo-secao {
+.projetos-section .titulo-secao {
     text-align: center;
     font-size: 32px;
     margin-bottom: 50px;
-    color: #ef4444;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
     text-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
 }
 
-/* A "Matriz" que organiza os cartões automaticamente */
+/* A Grid que organiza os cartões automaticamente */
 .projetos-grid {
     display: grid;
-    /* Cria colunas automáticas de no mínimo 300px */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    /* Espaço entre os cartões */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
 }
 
-/* O Cartão em si */
+/* O Cartão (Com Glassmorphism e Glow) */
 .card {
-    background-color: #1e1e1e;
-    border-radius: 12px;
-    padding: 25px;
-    border: 1px solid #333;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    /* Prepara a animação */
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 /* Efeito ao passar o mouse por cima (Hover) */
 .card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(239, 68, 68, 0.25);
-    border-color: #ef4444;
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(239, 68, 68, 0.15);
+    border-color: var(--glass-border-hover);
+    background: var(--glass-bg-hover);
+}
+
+/* Container da imagem do card */
+.card-image {
+    width: 100%;
+    height: 220px;
+    background-color: rgba(5, 5, 5, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--glass-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover fica mais preenchido e moderno */
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-image img {
+    transform: scale(1.05); /* Zoom sutil na imagem no hover */
+}
+
+/* Container para o conteúdo de texto */
+.card-content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .card h3 {
     margin-top: 0;
+    margin-bottom: 12px;
     font-size: 22px;
+    color: var(--text-primary);
+    font-weight: 700;
+    transition: var(--transition-smooth);
+}
+
+.card:hover h3 {
+    color: var(--accent-color);
 }
 
 .card p {
-    color: #cccccc;
+    color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 25px;
+    font-size: 15px;
+    flex-grow: 1; /* Garante alinhamento das tags e botão no rodapé */
 }
 
 /* Container das etiquetas de tecnologia */
 .tecnologias {
     display: flex;
     flex-wrap: wrap;
-    /* Se não couber na linha, joga para baixo */
-    gap: 10px;
-}
-
-/* Estilo das etiquetas (ex: Java, Python, MongoDB) */
-.badge {
-    background-color: rgba(239, 68, 68, 0.1);
-    color: #ef4444;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: 600;
-    border: 1px solid rgba(239, 68, 68, 0.3);
-    transition: all 0.2s ease;
-}
-
-.badge:hover {
-    background-color: rgba(239, 68, 68, 0.2);
-    box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
-}
-
-/* src/app/projetos/projetos.css */
-
-/* ... (mantenha as regras .projetos-section, .titulo-secao e .projetos-grid que já tínhamos) ... */
-
-/* Atualização do Card para conter a imagem no topo */
-.card {
-    background-color: #1e1e1e;
-    border-radius: 12px;
-    overflow: hidden;
-    /* Garante que a imagem respeite o arredondamento do card */
-    border: 1px solid #333;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    /* Organiza imagem no topo e conteúdo embaixo */
-}
-
-.card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(239, 68, 68, 0.25);
-    border-color: #ef4444;
-}
-
-/* Novo estilo para a imagem do card */
-.card-image {
-    width: 100%;
-    height: 200px;
-    background-color: #0f0f0f; /* Fundo escuro para preencher espaços vazios */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 1px solid #333;
-}
-
-.card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Faz a imagem preencher sem distorcer ou cortar */
-}
-
-/* Novo container para o conteúdo de texto (para dar padding) */
-.card-content {
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    /* Faz o conteúdo ocupar o espaço restante, empurrando o botão para baixo */
-}
-
-.card h3 {
-    margin-top: 0;
-    font-size: 22px;
-    color: #ffffff;
-}
-
-.card p {
-    color: #cccccc;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    flex-grow: 1;
-    /* Empurra as tecnologias e ações para o final do card */
-}
-
-/* ... (mantenha as regras .tecnologias e .badge) ... */
-.tecnologias {
+    gap: 8px;
     margin-bottom: 25px;
-    /* Espaço antes do botão */
 }
 
-/* Novo estilo para o botão do GitHub */
+/* Estilo das etiquetas */
+.badge {
+    background-color: rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: var(--transition-smooth);
+}
+
+.card:hover .badge {
+    border-color: rgba(239, 68, 68, 0.2);
+    color: var(--text-primary);
+}
+
+/* Botão do GitHub */
 .card-actions {
     margin-top: auto;
-    /* Garante que o botão fique sempre no rodapé do card */
 }
 
 .btn-github {
     display: inline-block;
     width: 100%;
-    /* Botão ocupa a largura total do conteúdo do card */
     text-align: center;
     background-color: transparent;
-    color: #ef4444;
+    color: var(--accent-color);
     padding: 12px 0;
     border-radius: 8px;
-    font-weight: bold;
+    font-weight: 600;
     text-decoration: none;
-    border: 2px solid #ef4444;
-    transition: all 0.3s ease;
+    border: 2px solid var(--accent-color);
+    box-sizing: border-box;
+    transition: var(--transition-smooth);
 }
 
 .btn-github:hover {
-    background-color: #ef4444;
+    background: var(--accent-gradient);
+    border-color: transparent;
     color: #ffffff;
-    box-shadow: 0 6px 15px rgba(239, 68, 68, 0.4);
-    transform: scale(1.03);
+    box-shadow: 0 5px 15px rgba(239, 68, 68, 0.35);
+    transform: translateY(-2px);
 }
 
-.projetos-grid {
-    /* Mudamos o minmax para 100% no mobile */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-@media (max-width: 480px) {
-    .contato-card {
-        padding: 20px 15px;
-        /* Card menos "gordo" por dentro */
-    }
-}
-
-/* Estilos do Carrossel de Imagens */
+/* ============================================================
+   ESTILOS DO CARROSSEL DE IMAGENS
+   ============================================================ */
 .carousel-container {
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 100%;
     overflow: hidden;
-    border-bottom: 1px solid #333;
-    background-color: #0f0f0f; /* Fundo escuro para preencher espaços vazios */
 }
 
 .carousel-slide {
@@ -211,7 +174,7 @@
 .carousel-slide img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Ajusta a imagem sem esticar ou cortar */
+    object-fit: cover;
 }
 
 .carousel-btn {
@@ -219,8 +182,10 @@
     top: 50%;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.6);
-    color: #ffffff;
-    border: none;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -228,22 +193,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: var(--transition-smooth);
     z-index: 5;
 }
 
 .carousel-btn:hover {
-    background-color: #ef4444;
+    background: var(--accent-gradient);
+    border-color: transparent;
     color: #ffffff;
     box-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
 }
 
 .carousel-btn.prev {
-    left: 10px;
+    left: 12px;
 }
 
 .carousel-btn.next {
-    right: 10px;
+    right: 12px;
 }
 
 .carousel-dots {
@@ -254,25 +220,47 @@
     display: flex;
     gap: 6px;
     z-index: 5;
-    background-color: rgba(0, 0, 0, 0.4);
-    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 6px 12px;
     border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .carousel-dots .dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.4);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: var(--transition-smooth);
 }
 
 .carousel-dots .dot:hover {
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .carousel-dots .dot.active {
-    background-color: #ef4444;
+    background-color: var(--accent-color);
     transform: scale(1.2);
+    box-shadow: 0 0 8px var(--accent-color);
+}
+
+/* ============================================================
+   RESPONSIVIDADE (MOBILE)
+   ============================================================ */
+@media (max-width: 768px) {
+    .projetos-section {
+        padding: 60px 20px;
+    }
+
+    .projetos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+
+    .card-image {
+        height: 180px;
+    }
 }

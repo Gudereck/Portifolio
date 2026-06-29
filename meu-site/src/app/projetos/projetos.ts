@@ -18,11 +18,12 @@ export class Projetos {
       linkGithub: 'https://github.com/Gudereck/Leitor-critico-web'
     },
     {
-      nome: 'Projeto de Geladeira em Java',
-      descricao: 'Projeto de geladeira com interface gráfica e banco de dados estruturado em Memória.',
-      tecnologias: ['Java', 'Spring Boot'],
-      imagem: '/Geladeira.png', // <--- Minúsculo
-      linkGithub: 'https://github.com/Gudereck/GeladeiraJava'
+      nome: 'AtivoFlow',
+      descricao: 'Sistema de gestão de ativos de TI e suporte técnico (chamados). Desenvolvido com arquitetura organizada e banco de dados relacional.',
+      tecnologias: ['Java', 'Spring Boot', 'PostgreSQL', 'Docker'],
+      imagens: ['/ativoflow1.png', '/ativoflow2.png', '/ativoflow3.png'],
+      activeImageIndex: 0,
+      linkGithub: 'https://github.com/Gudereck/AtivoFlow'
     },
     {
       nome: 'PvBanks',

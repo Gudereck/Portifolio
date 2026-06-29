@@ -8,13 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './contato.css'
 })
 export class Contato {
-  email = 'seu-email@exemplo.com';
-  // O caminho começa com / pois o arquivo está na raiz da pasta public
-  caminhoCurriculo = '/curriculo-gustavo.pdf';
+  email = 'Gustavorezende307@gmail.com';
+  caminhoCurriculo = '/Curriculo_Gustavo_de_Deus.docx';
 
   links = {
-    linkedin: 'https://linkedin.com/in/seu-perfil',
+    linkedin: 'https://www.linkedin.com/in/gustavo-de-deus/',
     github: 'https://github.com/Gudereck',
-    whatsapp: 'https://wa.me/5537999999999' // Substitua pelo seu número
+    whatsapp: 'https://wa.me/5537999999999' // Insira seu número de WhatsApp real aqui no futuro
   };
 }
