@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'JetBrains Mono', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: 'Outfit', sans-serif;
+  
+  --color-accent-primary: #ef4444;
+  --color-accent-secondary: #f97316;
+}
+
+:root {
+  --bg-primary: #050505;
+  --bg-secondary: #0a0a0a;
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --color-red-glow: rgba(239, 68, 68, 0.4);
+  --color-orange-glow: rgba(249, 115, 22, 0.3);
+  
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  min-height: 100vh;
+  cursor: crosshair;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: #1f1f23;
+  border: 1px solid #ef4444/20;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ef4444;
+}
+
+/* CRT Scanlines Overlay */
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    rgba(18, 16, 16, 0) 0%,
+    rgba(0, 0, 0, 0.15) 50%,
+    rgba(18, 16, 16, 0) 100%
+  );
+  background-size: 100% 4px;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* Futuristic Cyber Grid Background */
+.cyber-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(239, 68, 68, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(239, 68, 68, 0.03) 1px, transparent 1px);
+}
+
+/* Accent lines and target corners for containers */
+.corner-box {
+  position: relative;
+}
+.corner-box::before, .corner-box::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: #ef4444;
+  border-style: solid;
+  pointer-events: none;
+}
+.corner-box::before {
+  top: 0;
+  left: 0;
+  border-width: 2px 0 0 2px;
+}
+.corner-box::after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 2px 2px 0;
+}
+
+/* Glitch text effect */
+@keyframes glitch {
+  0% {
+    text-shadow: 1px 0 0 rgba(239, 68, 68, 0.5), -1px 0 0 rgba(249, 115, 22, 0.5);
+  }
+  50% {
+    text-shadow: -1px 0 0 rgba(239, 68, 68, 0.5), 1px 0 0 rgba(249, 115, 22, 0.5);
+  }
+  100% {
+    text-shadow: 1px 0 0 rgba(239, 68, 68, 0.5), -1px 0 0 rgba(249, 115, 22, 0.5);
+  }
+}
+
+.glitch-hover:hover {
+  animation: glitch 0.3s infinite;
+}
+
+/* Pulsing neon red light */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.15), inset 0 0 5px rgba(239, 68, 68, 0.05);
+    border-color: rgba(239, 68, 68, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.4), inset 0 0 10px rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.5);
+  }
+}
+
+.neon-pulse-border {
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+
+/* Cursor blink */
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+.cursor-blink {
+  border-right: 2px solid #ef4444;
+  animation: blink 0.75s step-end infinite;
+}
+
+/* Section offset */
+section {
+  scroll-margin-top: 100px;
+}
+
+/* ─── Periodic Glitch on hero title ─────────────────────────────────────── */
+@keyframes glitchPeriodic {
+  0%, 89%, 100% {
+    clip-path: none;
+    transform: none;
+    opacity: 1;
+  }
+  90% {
+    clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+    transform: translateX(-3px);
+    opacity: 0.85;
+  }
+  92% {
+    clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+    transform: translateX(3px);
+    opacity: 0.85;
+  }
+  94% {
+    clip-path: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.glitch-periodic {
+  animation: glitchPeriodic 6s infinite ease-in-out;
+}
+
+/* ─── Card scanline sweep on hover ──────────────────────────────────────── */
+@keyframes scanSweep {
+  0%   { top: 0%; opacity: 0.7; }
+  100% { top: 100%; opacity: 0; }
+}
+
+.card-scan-hover {
+  overflow: hidden;
+}
+.card-scan-hover::after {
+  content: '';
+  position: absolute;
+  inset-x: 0;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(239,68,68,0.6), transparent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.card-scan-hover:hover::after {
+  opacity: 1;
+  animation: scanSweep 0.8s ease-out forwards;
+}
+
+/* ─── Skill bar fill animation ───────────────────────────────────────────── */
+@keyframes fillBar {
+  from { width: 0%; }
+  to   { width: var(--skill-pct, 80%); }
+}
+
+.skill-bar {
+  background: rgba(239,68,68,0.15);
+  height: 2px;
+  border-radius: 1px;
+  overflow: hidden;
+}
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ef4444, #f97316);
+  box-shadow: 0 0 6px rgba(239,68,68,0.5);
+  width: 0%;
+  border-radius: 1px;
+}
+.skill-bar-fill.animate {
+  animation: fillBar 0.8s ease-out forwards;
+}
+
+/* ─── Data-stream flicker (subtle random blink on mono text) ─────────────── */
+@keyframes dataFlicker {
+  0%, 100% { opacity: 1; }
+  92%       { opacity: 1; }
+  93%       { opacity: 0.4; }
+  94%       { opacity: 1; }
+  97%       { opacity: 1; }
+  98%       { opacity: 0.6; }
+  99%       { opacity: 1; }
+}
+
+.data-flicker {
+  animation: dataFlicker 8s infinite;
+}
+.data-flicker-2 {
+  animation: dataFlicker 11s 3s infinite;
+}
+
+/* ─── Fade-in float (section reveals) ───────────────────────────────────── */
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.float-in {
+  animation: floatIn 0.5s ease-out both;
+}
+
