@@ -79,11 +79,59 @@
     width: 100%;
 }
 
+/* Logo como link sem sublinhado */
+.logo a {
+    text-decoration: none;
+}
+
+.logo h1 {
+    font-family: var(--font-mono);
+}
+
 /* Container para alinhar menu e botão */
 .nav-container {
     display: flex;
     align-items: center;
     gap: 30px;
+}
+
+/* Botão hambúrguer (escondido no desktop) */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 4px 8px;
+    line-height: 1;
+    transition: var(--transition-smooth);
+}
+
+.menu-toggle:hover {
+    color: var(--accent-color);
+}
+
+/* Overlay atrás do menu mobile */
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-overlay.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* CV dentro do menu mobile (escondido no desktop) */
+.nav-cv-mobile {
+    display: none;
 }
 
 /* Estilo do Botão de CV */
@@ -119,25 +167,74 @@
         padding: 12px 20px;
     }
 
-    .nav-links {
-        display: none;
-    }
-
     .logo h1 {
         font-size: 18px;
     }
 
-    .nav-container {
-        gap: 10px;
-    }
-
+    /* Esconde o CV do topo e mostra dentro do menu */
     .btn-cv-header {
-        padding: 6px 12px;
-        font-size: 12px;
-        border-radius: 6px;
+        display: none;
     }
 
-    .btn-cv-header i {
+    .menu-toggle {
+        display: block;
+        z-index: 1001;
+    }
+
+    /* Menu vira painel deslizante lateral */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 75%;
+        max-width: 300px;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 8px;
+        padding: 90px 30px 30px;
+        background: rgba(12, 12, 12, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-left: 1px solid var(--glass-border);
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+        transform: translateX(100%);
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 999;
+    }
+
+    .nav-links.aberto {
+        transform: translateX(0);
+    }
+
+    .nav-links li a {
+        display: block;
+        font-size: 17px;
+        padding: 14px 12px;
+        border-radius: 8px;
+    }
+
+    .nav-links li a:hover {
+        background: rgba(255, 255, 255, 0.04);
+    }
+
+    /* CV dentro do menu mobile */
+    .nav-cv-mobile {
+        display: block;
+        margin-top: 12px;
+        border-top: 1px solid var(--glass-border);
+        padding-top: 16px;
+    }
+
+    .nav-cv-mobile a {
+        background: var(--accent-gradient);
+        color: var(--text-primary) !important;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .nav-cv-mobile a::after {
         display: none;
     }
 }

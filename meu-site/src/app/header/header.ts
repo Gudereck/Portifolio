@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header {}
+export class Header {
+  menuAberto = signal(false);
+
+  toggleMenu() {
+    this.menuAberto.update((v) => !v);
+  }
+
+  fecharMenu() {
+    this.menuAberto.set(false);
+  }
+}

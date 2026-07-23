@@ -1,6 +1,9 @@
 <section class="contato-section" id="contato">
     <div class="contato-container">
-        <h2 class="titulo-secao">Vamos Conversar?</h2>
+        <div class="secao-header">
+            <span class="secao-eyebrow"><span class="num">04.</span> vamos construir juntos</span>
+            <h2 class="titulo-secao">Vamos Conversar?</h2>
+        </div>
         <p class="subtitulo">Estou disponível para novas oportunidades e parcerias em projetos de Back-end.</p>
 
         <div class="contato-grid">
@@ -8,11 +11,11 @@
             <!-- Currículo Card (Destaque) -->
             <div class="contato-card destaque">
                 <div class="card-icon">
-                    <i class="fa-solid fa-file-word"></i>
+                    <i class="fa-solid fa-file-pdf"></i>
                 </div>
                 <h3>Meu Currículo</h3>
-                <p>Acesse minha trajetória profissional completa.</p>
-                <a [href]="caminhoCurriculo" [download]="caminhoCurriculo" class="btn-download">
+                <p>Acesse minha trajetória profissional completa em PDF.</p>
+                <a [href]="caminhoCurriculo" [download]="nomeCurriculo" class="btn-download">
                     <i class="fa-solid fa-download"></i> Download CV
                 </a>
             </div>
@@ -30,9 +33,6 @@
                     </a>
                     <a [href]="links.github" target="_blank" rel="noopener noreferrer" class="link-social github">
                         <i class="fa-brands fa-github"></i> GitHub
-                    </a>
-                    <a [href]="links.whatsapp" target="_blank" rel="noopener noreferrer" class="link-social whatsapp">
-                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
                     </a>
                 </div>
             </div>

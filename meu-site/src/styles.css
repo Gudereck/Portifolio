@@ -66,6 +66,68 @@ video {
 }
 
 /* ============================================================
+   CABEÇALHO DE SEÇÃO (eyebrow + título)
+   ============================================================ */
+.secao-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.secao-header .titulo-secao {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.secao-eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--accent-color);
+    margin-bottom: 14px;
+    padding: 5px 14px;
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    border-radius: 20px;
+    background: rgba(239, 68, 68, 0.06);
+}
+
+.secao-eyebrow .num {
+    opacity: 0.6;
+}
+
+/* ============================================================
+   ANIMAÇÃO DE ENTRADA AO ROLAR (usada pela diretiva appReveal)
+   ============================================================ */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+.reveal.revelado {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .circle {
+        animation: none;
+    }
+}
+
+/* ============================================================
    2. AJUSTES DE NAVEGAÇÃO (ÂNCORES)
    ============================================================ */
 /* Isso impede que o Header fixo fique em cima do título da seção quando você clica no menu */
@@ -89,6 +151,40 @@ section {
     /* Fica atrás de tudo */
     background-color: #050505;
     overflow: hidden;
+}
+
+/* Grade sutil sobre o fundo para dar profundidade técnica */
+.bg-animated::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 55px 55px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 40%, transparent 100%);
+}
+
+/* Vinheta nas bordas para focar o conteúdo central */
+.bg-animated::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+/* Barra de progresso de leitura no topo */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: var(--accent-gradient);
+    z-index: 1002;
+    box-shadow: 0 0 10px var(--accent-glow);
+    transition: width 0.1s linear;
 }
 
 /* Círculos de luz neon verde */

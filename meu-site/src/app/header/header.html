@@ -1,17 +1,36 @@
 <header class="navbar">
     <div class="logo">
-        <h1>Meu Portfólio</h1>
+        <a href="#hero" (click)="fecharMenu()"><h1>&lt;Gustavo /&gt;</h1></a>
     </div>
 
     <nav class="nav-container">
-        <ul class="nav-links">
-            <li><a href="#sobre">Sobre Mim</a></li>
-            <li><a href="#projetos">Projetos</a></li>
-            <li><a href="#contato">Contato</a></li>
+        <ul class="nav-links" [class.aberto]="menuAberto()">
+            <li><a href="#sobre" (click)="fecharMenu()">Sobre</a></li>
+            <li><a href="#trajetoria" (click)="fecharMenu()">Trajetória</a></li>
+            <li><a href="#projetos" (click)="fecharMenu()">Projetos</a></li>
+            <li><a href="#contato" (click)="fecharMenu()">Contato</a></li>
+            <li class="nav-cv-mobile">
+                <a href="/Curriculo_Gustavo_de_Deus.pdf" download="Gustavo de Deus.pdf" (click)="fecharMenu()">
+                    <i class="fa-solid fa-file-pdf"></i> Baixar CV
+                </a>
+            </li>
         </ul>
 
-        <a href="/Curriculo_Gustavo_de_Deus.docx" download="Curriculo_Gustavo_de_Deus.docx" class="btn-cv-header">
-            <i class="fa-solid fa-file-word"></i> Baixar CV
+        <a href="/Curriculo_Gustavo_de_Deus.pdf" download="Gustavo de Deus.pdf" class="btn-cv-header">
+            <i class="fa-solid fa-file-pdf"></i> Baixar CV
         </a>
+
+        <button
+            class="menu-toggle"
+            type="button"
+            (click)="toggleMenu()"
+            [attr.aria-expanded]="menuAberto()"
+            aria-label="Abrir menu de navegação"
+            aria-controls="menu-principal"
+        >
+            <i class="fa-solid" [class.fa-bars]="!menuAberto()" [class.fa-xmark]="menuAberto()"></i>
+        </button>
     </nav>
 </header>
+
+<div class="menu-overlay" [class.ativo]="menuAberto()" (click)="fecharMenu()"></div>

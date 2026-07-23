@@ -1,3 +1,5 @@
+<div class="scroll-progress" [style.width.%]="progresso()"></div>
+
 <div class="bg-animated">
   <div class="circle"></div>
   <div class="circle"></div>
@@ -5,9 +7,13 @@
 </div>
 <app-header></app-header>
 
-<main>
-  <app-sobre></app-sobre>
-  <app-projetos></app-projetos>
+<app-hero></app-hero>
 
-  <app-contato></app-contato>
+<main>
+  <app-sobre appReveal></app-sobre>
+  <app-trajetoria appReveal></app-trajetoria>
+  <app-projetos appReveal></app-projetos>
+  <app-contato appReveal></app-contato>
 </main>
+
+<app-footer></app-footer>

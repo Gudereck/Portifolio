@@ -1,0 +1,156 @@
+.trajetoria-section {
+    padding: 80px 50px;
+}
+
+.trajetoria-container {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.trajetoria-container .titulo-secao {
+    color: var(--accent-color);
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+    margin: 0;
+}
+
+/* Linha vertical */
+.timeline {
+    position: relative;
+    padding-left: 40px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent-color), rgba(239, 68, 68, 0.05));
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Marcador (bolinha com ícone) */
+.timeline-marker {
+    position: absolute;
+    left: -40px;
+    top: 4px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    border: 2px solid var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    font-size: 13px;
+    z-index: 2;
+    transition: var(--transition-smooth);
+}
+
+.timeline-marker.atual {
+    background: var(--accent-gradient);
+    color: #fff;
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15);
+    animation: pulseMarker 2s infinite;
+}
+
+@keyframes pulseMarker {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15); }
+    50% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0.05); }
+}
+
+/* Card */
+.timeline-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    padding: 22px 24px;
+    transition: var(--transition-smooth);
+}
+
+.timeline-card:hover {
+    border-color: var(--glass-border-hover);
+    background: var(--glass-bg-hover);
+    transform: translateX(6px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.timeline-periodo {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.timeline-periodo.atual {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.timeline-tag {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.timeline-card h3 {
+    margin: 0 0 4px;
+    font-size: 18px;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.timeline-local {
+    font-size: 13px;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.timeline-card p {
+    margin: 12px 0 0;
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .trajetoria-section {
+        padding: 60px 20px;
+    }
+
+    .timeline-card:hover {
+        transform: none;
+    }
+
+    .timeline-topo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+}

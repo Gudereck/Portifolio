@@ -1,6 +1,9 @@
 <section class="sobre-section" id="sobre">
     <div class="sobre-container">
-        <h2 class="titulo-secao">Sobre Mim</h2>
+        <div class="secao-header">
+            <span class="secao-eyebrow"><span class="num">01.</span> quem sou eu</span>
+            <h2 class="titulo-secao">Sobre Mim</h2>
+        </div>
 
         <div class="sobre-content-grid">
             <!-- Coluna da Esquerda: Imagem e Redes -->
@@ -10,11 +13,14 @@
                 </div>
 
                 <div class="redes-sociais">
-                    <a href="https://github.com/Gudereck" target="_blank" title="Ver GitHub" aria-label="GitHub">
+                    <a href="https://github.com/Gudereck" target="_blank" rel="noopener noreferrer" title="Ver GitHub" aria-label="GitHub">
                         <i class="fa-brands fa-github"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/gustavo-de-deus/" target="_blank" title="Ver LinkedIn" aria-label="LinkedIn">
+                    <a href="https://www.linkedin.com/in/gustavo-de-deus/" target="_blank" rel="noopener noreferrer" title="Ver LinkedIn" aria-label="LinkedIn">
                         <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:gustavorezende307@gmail.com" title="Enviar e-mail" aria-label="E-mail">
+                        <i class="fa-solid fa-envelope"></i>
                     </a>
                 </div>
             </div>
@@ -22,7 +28,7 @@
             <!-- Coluna da Direita: Bio, Cargo e Habilidades -->
             <div class="sobre-col-right">
                 <div class="sobre-texto">
-                    <h3>Olá, eu sou o <span class="destaque-nome">{{ nome }}</span></h3>
+                    <h3>Prazer, <span class="destaque-nome">{{ nome }}</span> 👋</h3>
 
                     <div class="typing-container">
                         <p class="typing-text">{{ titulo }}</p>
@@ -31,10 +37,30 @@
                     <p class="resumo">{{ resumo }}</p>
                 </div>
 
-                <div class="sobre-habilidades">
-                    <h3>Minhas Habilidades Tecnológicas</h3>
+                <!-- Estatísticas rápidas -->
+                <div class="stats-grid">
+                    @for (stat of estatisticas; track stat.label) {
+                    <div class="stat-card">
+                        <span class="stat-valor">{{ stat.valor }}</span>
+                        <span class="stat-label">{{ stat.label }}</span>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Habilidades por categoria -->
+        <div class="sobre-habilidades">
+            <h3>Minhas Habilidades Tecnológicas</h3>
+            <div class="skills-categorias">
+                @for (grupo of gruposSkills; track grupo.categoria) {
+                <div class="skill-grupo">
+                    <div class="skill-grupo-head">
+                        <i [class]="grupo.icone"></i>
+                        <span>{{ grupo.categoria }}</span>
+                    </div>
                     <div class="habilidades-grid">
-                        @for (hab of habilidadesPrincipais; track hab.nome) {
+                        @for (hab of grupo.skills; track hab.nome) {
                         <span class="hab-badge" [attr.data-tech]="hab.nome.toLowerCase().replace(' ', '-')">
                             <i [class]="hab.icone"></i>
                             {{ hab.nome }}
@@ -42,6 +68,7 @@
                         }
                     </div>
                 </div>
+                }
             </div>
         </div>
     </div>

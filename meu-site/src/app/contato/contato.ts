@@ -8,12 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './contato.css'
 })
 export class Contato {
-  email = 'Gustavorezende307@gmail.com';
-  caminhoCurriculo = '/Curriculo_Gustavo_de_Deus.docx';
+  email = 'gustavorezende307@gmail.com';
+  caminhoCurriculo = '/Curriculo_Gustavo_de_Deus.pdf';
+  nomeCurriculo = 'Gustavo de Deus.pdf';
 
   links = {
     linkedin: 'https://www.linkedin.com/in/gustavo-de-deus/',
-    github: 'https://github.com/Gudereck',
-    whatsapp: 'https://wa.me/5537999999999' // Insira seu número de WhatsApp real aqui no futuro
+    github: 'https://github.com/Gudereck'
   };
 }
