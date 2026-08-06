@@ -1,20 +1,22 @@
-import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-@Component({
-  selector: 'app-contato',
-  standalone: true,
-  imports: [],
-  templateUrl: './contato.html',
-  styleUrl: './contato.css'
-})
-export class Contato {
-  email = 'seu-email@exemplo.com';
-  // O caminho começa com / pois o arquivo está na raiz da pasta public
-  caminhoCurriculo = '/curriculo-gustavo.pdf';
+import { Contato } from './contato';
 
-  links = {
-    linkedin: 'https://linkedin.com/in/seu-perfil',
-    github: 'https://github.com/Gudereck',
-    whatsapp: 'https://wa.me/5537999999999' // Substitua pelo seu número
-  };
-}
+describe('Contato', () => {
+  let component: Contato;
+  let fixture: ComponentFixture<Contato>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [Contato],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(Contato);
+    component = fixture.componentInstance;
+    await fixture.whenStable();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

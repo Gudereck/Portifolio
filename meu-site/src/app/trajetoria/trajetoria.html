@@ -17,7 +17,12 @@
                         <span class="timeline-periodo" [class.atual]="item.atual">{{ item.periodo }}</span>
                         <span class="timeline-tag">{{ item.tipo === 'formacao' ? 'Formação' : 'Experiência' }}</span>
                     </div>
-                    <h3>{{ item.titulo }}</h3>
+                    <h3>
+                        {{ item.titulo }}
+                        @if (item.atual) {
+                        <span class="badge-andamento">Em andamento</span>
+                        }
+                    </h3>
                     <span class="timeline-local">{{ item.local }}</span>
                     <p>{{ item.descricao }}</p>
                 </div>

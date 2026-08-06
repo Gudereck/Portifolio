@@ -14,6 +14,7 @@ export class Contato {
 
   links = {
     linkedin: 'https://www.linkedin.com/in/gustavo-de-deus/',
-    github: 'https://github.com/Gudereck'
+    github: 'https://github.com/Gudereck',
+    whatsapp: 'https://wa.me/5537988338421'
   };
 }

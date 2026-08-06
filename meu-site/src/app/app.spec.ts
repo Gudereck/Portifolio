@@ -1,6 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
 
+// jsdom não implementa IntersectionObserver; RevealDirective (usada por Sobre,
+// Trajetoria, Projetos e Contato) precisa dele durante o ngAfterViewInit.
+if (typeof IntersectionObserver === 'undefined') {
+  (globalThis as unknown as { IntersectionObserver: unknown }).IntersectionObserver = class {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  };
+}
+
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -14,10 +24,10 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render title', async () => {
+  it('should render hero name', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, meu-site');
+    expect(compiled.querySelector('.hero-nome')?.textContent).toContain('Gustavo de Deus');
   });
 });
